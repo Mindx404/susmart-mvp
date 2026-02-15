@@ -127,19 +127,19 @@ export default function FarmerDashboard() {
         <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 font-sans">
 
             <header className="bg-white border-b-2 border-slate-100 shadow-sm sticky top-0 z-50">
-                <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-green-400 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30">
-                            <Sprout className="w-6 h-6 text-white" />
+                <div className="max-w-4xl mx-auto px-3 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+                    <div className="flex items-center gap-2 sm:gap-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-green-600 to-green-400 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30">
+                            <Sprout className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                         </div>
                         <div>
-                            <h1 className="text-xl font-black text-slate-900">Мои поля</h1>
-                            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Панель фермера</p>
+                            <h1 className="text-base sm:text-xl font-black text-slate-900">Мои поля</h1>
+                            <p className="text-[9px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest hidden sm:block">Панель фермера</p>
                         </div>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                         <Link href="/">
-                            <button className="h-10 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm rounded-xl transition-all flex items-center gap-2">
+                            <button className="h-9 sm:h-10 px-3 sm:px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center gap-2">
                                 <Home className="w-4 h-4" />
                                 <span className="hidden sm:inline">Главная</span>
                             </button>
@@ -149,7 +149,7 @@ export default function FarmerDashboard() {
                                 await supabase.auth.signOut()
                                 router.push('/login')
                             }}
-                            className="h-10 px-4 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-sm rounded-xl transition-all flex items-center gap-2"
+                            className="h-9 sm:h-10 px-3 sm:px-4 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-xs sm:text-sm rounded-xl transition-all flex items-center gap-2"
                         >
                             <LogOut className="w-4 h-4" />
                             <span className="hidden sm:inline">Выйти</span>
@@ -158,22 +158,22 @@ export default function FarmerDashboard() {
                 </div>
             </header>
 
-            <div className="max-w-4xl mx-auto p-6">
+            <div className="max-w-4xl mx-auto p-3 sm:p-6">
 
                 {pendingFields.length > 0 && (
-                    <div className="mb-6 bg-gradient-to-r from-blue-600 to-blue-500 rounded-3xl shadow-xl shadow-blue-500/30 p-6 text-white">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Users className="w-6 h-6" />
-                            <h2 className="text-xl font-black">Статус очереди</h2>
+                    <div className="mb-4 sm:mb-6 bg-gradient-to-r from-blue-600 to-blue-500 rounded-2xl sm:rounded-3xl shadow-xl shadow-blue-500/30 p-4 sm:p-6 text-white">
+                        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                            <Users className="w-5 h-5 sm:w-6 sm:h-6" />
+                            <h2 className="text-lg sm:text-xl font-black">Статус очереди</h2>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-white/10 backdrop-blur rounded-xl p-4">
-                                <p className="text-blue-100 text-xs font-bold uppercase tracking-widest mb-1">Заявок в очереди</p>
-                                <p className="text-3xl font-black">{allPendingFields.length}</p>
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                            <div className="bg-white/10 backdrop-blur rounded-xl p-3 sm:p-4">
+                                <p className="text-blue-100 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">Заявок в очереди</p>
+                                <p className="text-2xl sm:text-3xl font-black">{allPendingFields.length}</p>
                             </div>
-                            <div className="bg-white/10 backdrop-blur rounded-xl p-4">
-                                <p className="text-blue-100 text-xs font-bold uppercase tracking-widest mb-1">Ваша позиция</p>
-                                <p className="text-3xl font-black">
+                            <div className="bg-white/10 backdrop-blur rounded-xl p-3 sm:p-4">
+                                <p className="text-blue-100 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1">Ваша позиция</p>
+                                <p className="text-2xl sm:text-3xl font-black">
                                     #{getQueuePosition(pendingFields[0].id) || '—'}
                                 </p>
                             </div>
@@ -183,18 +183,18 @@ export default function FarmerDashboard() {
 
 
                 {approvedFields.length > 0 && (
-                    <div className="mb-6 bg-gradient-to-r from-green-600 to-green-500 rounded-3xl shadow-xl shadow-green-500/30 p-6 text-white">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Calendar className="w-6 h-6" />
-                            <h2 className="text-xl font-black">Ваша очередь полива</h2>
+                    <div className="mb-4 sm:mb-6 bg-gradient-to-r from-green-600 to-green-500 rounded-2xl sm:rounded-3xl shadow-xl shadow-green-500/30 p-4 sm:p-6 text-white">
+                        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                            <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
+                            <h2 className="text-lg sm:text-xl font-black">Ваша очередь полива</h2>
                         </div>
                         <div className="space-y-3">
                             {approvedFields.map((field: Field) => (
-                                <div key={field.id} className="bg-white/10 backdrop-blur rounded-xl p-4">
+                                <div key={field.id} className="bg-white/10 backdrop-blur rounded-xl p-3 sm:p-4">
                                     <div className="flex items-start justify-between mb-3">
                                         <div>
-                                            <h3 className="font-black text-lg mb-1">{field.name}</h3>
-                                            <p className="text-green-100 text-sm">
+                                            <h3 className="font-black text-base sm:text-lg mb-1">{field.name}</h3>
+                                            <p className="text-green-100 text-xs sm:text-sm">
                                                 {field.crop_type} • {field.area} га
                                             </p>
                                             {field.street && (
@@ -230,24 +230,25 @@ export default function FarmerDashboard() {
                 )}
 
 
-                <div className="mb-8">
+                <div className="mb-6 sm:mb-8">
                     <Link href="/farmer/new">
-                        <button className="w-full h-16 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white font-black text-lg rounded-2xl shadow-xl shadow-green-500/30 transition-all flex items-center justify-center gap-3">
-                            <Plus className="w-6 h-6" />
-                            Создать новую заявку на полив
+                        <button className="w-full h-14 sm:h-16 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white font-black text-base sm:text-lg rounded-xl sm:rounded-2xl shadow-xl shadow-green-500/30 transition-all flex items-center justify-center gap-2 sm:gap-3">
+                            <Plus className="w-5 h-5 sm:w-6 sm:h-6" />
+                            <span className="hidden sm:inline">Создать новую заявку на полив</span>
+                            <span className="sm:hidden">Новая заявка</span>
                         </button>
                     </Link>
                 </div>
 
 
                 {loading ? (
-                    <div className="text-center py-20">
-                        <div className="w-16 h-16 border-4 border-green-200 border-t-green-600 rounded-full animate-spin mx-auto mb-4"></div>
-                        <p className="text-slate-500 font-medium">Загрузка полей...</p>
+                    <div className="text-center py-12 sm:py-20">
+                        <div className="w-14 h-14 sm:w-16 sm:h-16 border-4 border-green-200 border-t-green-600 rounded-full animate-spin mx-auto mb-4"></div>
+                        <p className="text-sm sm:text-base text-slate-500 font-medium">Загрузка полей...</p>
                     </div>
                 ) : myFields.length === 0 ? (
-                    <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-12 text-center">
-                        <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl shadow-slate-200/50 p-8 sm:p-12 text-center">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
                             <Sprout className="w-10 h-10 text-slate-400" />
                         </div>
                         <h2 className="text-2xl font-black text-slate-900 mb-3">Нет полей</h2>
