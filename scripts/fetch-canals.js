@@ -1,15 +1,11 @@
-// Скрипт для загрузки реальных данных каналов Кыргызстана из OpenStreetMap
 const fs = require('fs');
 const https = require('https');
 
-// Overpass API запрос для каналов Кыргызстана
 const overpassQuery = `
 [out:json][timeout:60];
 (
-  // Все каналы в Кыргызстане
   way["waterway"="canal"](39.0,69.0,43.5,80.5);
   way["waterway"="drain"](39.0,69.0,43.5,80.5);
-  // Крупные ирригационные каналы
   relation["waterway"="canal"](39.0,69.0,43.5,80.5);
 );
 out geom;
@@ -41,7 +37,6 @@ const req = https.request(url, options, (res) => {
             const json = JSON.parse(data);
             console.log(`✅ Получено элементов: ${json.elements.length}`);
 
-            // Преобразуем в удобный формат
             const canals = json.elements
                 .filter(el => el.type === 'way' && el.geometry)
                 .map(el => ({
@@ -50,14 +45,12 @@ const req = https.request(url, options, (res) => {
                     type: el.tags?.waterway || 'canal',
                     path: el.geometry.map(coord => [coord.lat, coord.lon])
                 }))
-                .filter(canal => canal.path.length > 1); // Только с координатами
+                .filter(canal => canal.path.length > 1);
 
             console.log(`📊 Обработано каналов: ${canals.length}`);
 
-            // Сохраняем в JSON
             const outputPath = './public/data/kyrgyzstan-canals.json';
 
-            // Создаем директорию если нет
             const dir = './public/data';
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir, { recursive: true });
@@ -66,7 +59,6 @@ const req = https.request(url, options, (res) => {
             fs.writeFileSync(outputPath, JSON.stringify(canals, null, 2));
             console.log(`💾 Данные сохранены: ${outputPath}`);
 
-            // Показываем примеры
             console.log('\n📋 Примеры каналов:');
             canals.slice(0, 5).forEach((canal, i) => {
                 console.log(`  ${i + 1}. ${canal.name} (${canal.path.length} точек)`);

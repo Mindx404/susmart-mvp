@@ -52,7 +52,7 @@ export const translations = {
         pending: "Pending",
         rejected: "Rejected",
 
-        // Landing Page
+
         landingTitle: "Fair & Transparent Water Distribution",
         landingSubtitle: "Data-driven decision support system for agricultural irrigation. Bridging the gap between farmers and operators.",
         trustedResource: "Trusted Resource Management",
@@ -76,7 +76,7 @@ export const translations = {
         getStarted: "Get Started",
         signIn: "Sign In",
 
-        // Operator
+
         operatorPortal: "Operator Portal",
         operations: "Operations",
         liveMap: "Live Map View",
@@ -147,7 +147,7 @@ export const translations = {
         pending: "В ожидании",
         rejected: "Отклонено",
 
-        // Landing Page
+
         landingTitle: "Честное и Прозрачное Распределение Воды",
         landingSubtitle: "Система поддержки принятия решений для сельскохозяйственной ирригации. Мост между фермерами и операторами.",
         trustedResource: "Надежное Управление Ресурсами",
@@ -241,7 +241,7 @@ export const translations = {
         pending: "Күтүүдө",
         rejected: "Четке кагылды",
 
-        // Landing Page
+
         landingTitle: "Сууну Адилеттүү Бөлүштүрүү",
         landingSubtitle: "Дыйкандар жана операторлор үчүн айыл чарба ирригациясынын маалыматка негизделген чечим системасы.",
         trustedResource: "Ишенимдүү Ресурстарды Башкаруу",
@@ -265,7 +265,7 @@ export const translations = {
         getStarted: "Баштоо",
         signIn: "Кирүү",
 
-        // Operator
+
         operatorPortal: "Оператор Порталы",
         operations: "Операциялар",
         liveMap: "Жандуу Карта",

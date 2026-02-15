@@ -74,14 +74,14 @@ export default function OperatorDashboard() {
     }, [])
 
     const loadFields = async () => {
-        // Загружаем pending
+
         const { data: pending } = await supabase
             .from('fields')
             .select('*, profiles(full_name)')
             .eq('status', 'pending')
             .order('risk_score', { ascending: false })
 
-        // Загружаем approved (очередь полива)
+
         const { data: approved } = await supabase
             .from('fields')
             .select('*, profiles(full_name)')
@@ -153,7 +153,7 @@ export default function OperatorDashboard() {
 
     return (
         <div className="min-h-screen bg-slate-50 font-sans">
-            {/* Header */}
+
             <header className="bg-white border-b-2 border-slate-100 shadow-sm">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-4">
@@ -187,7 +187,7 @@ export default function OperatorDashboard() {
             </header>
 
             <div className="max-w-7xl mx-auto p-6 space-y-6">
-                {/* Очередь полива (Одобренные) */}
+
                 <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 overflow-hidden">
                     <div className="p-6 bg-gradient-to-r from-green-600 to-green-500 text-white">
                         <div className="flex items-center justify-between">
@@ -211,7 +211,7 @@ export default function OperatorDashboard() {
                             </div>
                         ) : (
                             <div className="divide-y divide-slate-100">
-                                {approvedFields.map((field) => (
+                                {approvedFields.map((field: Field) => (
                                     <div key={field.id} className="p-5 hover:bg-green-50 transition-colors">
                                         <div className="flex items-start gap-4">
                                             <div className="flex-shrink-0">
@@ -262,7 +262,7 @@ export default function OperatorDashboard() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* Заявки в ожидании */}
+
                     <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 overflow-hidden">
                         <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-500 text-white">
                             <div className="flex items-center justify-between mb-4">
@@ -275,8 +275,8 @@ export default function OperatorDashboard() {
                                 <button
                                     onClick={() => setSimulationActive(!simulationActive)}
                                     className={`px-4 py-2 rounded-xl font-bold text-sm ${simulationActive
-                                            ? 'bg-amber-500 text-white'
-                                            : 'bg-white/20 hover:bg-white/30'
+                                        ? 'bg-amber-500 text-white'
+                                        : 'bg-white/20 hover:bg-white/30'
                                         }`}
                                 >
                                     {simulationActive ? '⚠️ Засуха' : '🌡️ Симуляция'}
@@ -296,7 +296,7 @@ export default function OperatorDashboard() {
                                 </div>
                             ) : (
                                 <div>
-                                    {Object.entries(pendingByDistrict).map(([district, fields]) => (
+                                    {Object.entries(pendingByDistrict).map(([district, fields]: [string, Field[]]) => (
                                         <div key={district} className="border-b-4 border-slate-100">
                                             <div className="bg-slate-100 px-5 py-3 flex items-center gap-2">
                                                 <MapPin className="w-4 h-4 text-slate-600" />
@@ -306,7 +306,7 @@ export default function OperatorDashboard() {
                                             </div>
 
                                             <div className="divide-y divide-slate-100">
-                                                {fields.map((field, index) => (
+                                                {fields.map((field: Field, index: number) => (
                                                     <div key={field.id} className="p-5 hover:bg-slate-50">
                                                         <div className="flex items-start gap-4">
                                                             <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center">
@@ -324,8 +324,8 @@ export default function OperatorDashboard() {
                                                                         )}
                                                                     </div>
                                                                     <div className={`px-3 py-1 rounded-lg font-black text-xs ${field.risk_score > 70 ? 'bg-red-100 text-red-700' :
-                                                                            field.risk_score > 40 ? 'bg-amber-100 text-amber-700' :
-                                                                                'bg-green-100 text-green-700'
+                                                                        field.risk_score > 40 ? 'bg-amber-100 text-amber-700' :
+                                                                            'bg-green-100 text-green-700'
                                                                         }`}>
                                                                         {field.risk_score}%
                                                                     </div>
@@ -359,7 +359,7 @@ export default function OperatorDashboard() {
                         </div>
                     </div>
 
-                    {/* Карта */}
+
                     <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 overflow-hidden">
                         <div className="p-6 bg-gradient-to-r from-slate-700 to-slate-600 text-white">
                             <h2 className="text-2xl font-black">Карта Кыргызстана</h2>

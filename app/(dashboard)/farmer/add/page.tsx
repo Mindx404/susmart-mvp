@@ -33,7 +33,7 @@ export default function AddFieldPage() {
     const [isAnalyzing, setIsAnalyzing] = useState(false)
     const [user, setUser] = useState<any>(null)
 
-    // Form State
+
     const [name, setName] = useState('')
     const [area, setArea] = useState('')
     const [crop, setCrop] = useState('')
@@ -86,7 +86,7 @@ export default function AddFieldPage() {
 
     const startAIAnalysis = async (file: File) => {
         setIsAnalyzing(true)
-        // Simulate delay
+
         await new Promise(resolve => setTimeout(resolve, 2000))
 
         const analysis = await analyzeCropPhoto(crop || 'General')
@@ -140,14 +140,14 @@ export default function AddFieldPage() {
                 <h1 className="text-2xl font-black text-slate-900 mb-2">Register New Field</h1>
                 <p className="text-slate-500 text-sm mb-6">Complete the steps below to request water allocation.</p>
 
-                {/* Progress Indicators */}
+
                 <div className="grid grid-cols-3 gap-2 mb-8">
                     {[1, 2, 3].map((s) => (
                         <div key={s} className={cn("h-1 rounded-full transition-all duration-500", step >= s ? "bg-primary" : "bg-slate-200")} />
                     ))}
                 </div>
 
-                {/* Step 1: Basic Info */}
+
                 <div className={cn("transition-all duration-500", step === 1 ? "block fade-in slide-in-from-right-4" : "hidden")}>
                     <Card className="border-none shadow-lg shadow-slate-200/50">
                         <CardContent className="p-6 space-y-6">
@@ -208,7 +208,7 @@ export default function AddFieldPage() {
                     </Card>
                 </div>
 
-                {/* Step 2: Geolocation */}
+
                 <div className={cn("transition-all duration-500", step === 2 ? "block fade-in slide-in-from-right-4" : "hidden")}>
                     <Card className="border-none shadow-lg shadow-slate-200/50">
                         <CardContent className="p-6 space-y-6">
@@ -263,7 +263,7 @@ export default function AddFieldPage() {
                     </Card>
                 </div>
 
-                {/* Step 3: Photo & AI */}
+
                 <div className={cn("transition-all duration-500", step === 3 ? "block fade-in slide-in-from-right-4" : "hidden")}>
                     <Card className="border-none shadow-lg shadow-slate-200/50">
                         <CardContent className="p-6 space-y-6">

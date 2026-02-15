@@ -36,7 +36,7 @@
   --radius: 0.5rem;
 }
 
-/* Specific official styling overrides */
+
 * {
   border-color: var(--border);
 }
@@ -58,7 +58,7 @@ h6 {
   letter-spacing: -0.025em;
 }
 
-/* Subtle depth instead of harsh shadows */
+
 .card-shadow {
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
@@ -68,7 +68,7 @@ h6 {
   border-bottom: 2px solid #0284c7;
 }
 
-/* Leaflet Overrides for better visibility */
+
 .leaflet-container {
   font-family: inherit;
   border-radius: 0.5rem;
@@ -80,7 +80,7 @@ h6 {
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1) !important;
 }
 
-/* Custom scrollbars for clean look */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

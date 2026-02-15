@@ -17,7 +17,7 @@ export default function GlobalHeader() {
     const supabase = createClient()
 
     useEffect(() => {
-        // Network status listeners
+
         const handleOnline = () => setIsOnline(true)
         const handleOffline = () => setIsOnline(false)
 
@@ -27,7 +27,7 @@ export default function GlobalHeader() {
             setIsOnline(navigator.onLine)
         }
 
-        // Get user data
+
         const getUser = async () => {
             const { data: { user } } = await supabase.auth.getUser()
             if (user) {
@@ -68,7 +68,7 @@ export default function GlobalHeader() {
             </div>
 
             <div className="flex items-center gap-2 sm:gap-4">
-                {/* Language Switcher */}
+
                 <div className="hidden md:flex bg-slate-100/50 p-1 rounded-lg border border-slate-200/50">
                     {(['en', 'ru', 'kg'] as const).map((l) => (
                         <button
@@ -84,14 +84,14 @@ export default function GlobalHeader() {
                     ))}
                 </div>
 
-                {/* Mobile Lang Indicator (simplified) */}
+
                 <div className="md:hidden flex items-center justify-center h-8 w-8 bg-slate-50 text-slate-500 rounded-full text-xs font-black uppercase border border-slate-100">
                     {lang}
                 </div>
 
                 <div className="h-8 w-px bg-slate-100 mx-1 hidden sm:block" />
 
-                {/* Network Indicator */}
+
                 <div className={cn(
                     "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all shadow-sm",
                     isOnline
@@ -102,7 +102,7 @@ export default function GlobalHeader() {
                     <span className="hidden sm:inline">{isOnline ? 'Online' : 'Offline'}</span>
                 </div>
 
-                {/* User Profile */}
+
                 {user && (
                     <div className="flex items-center gap-3 pl-2 sm:pl-4 sm:border-l border-slate-100">
                         <div className="hidden md:block text-right">

@@ -50,7 +50,7 @@ export default function LandingPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-white font-sans selection:bg-primary/20">
-      {/* Header */}
+
       <header className="sticky top-0 z-50 w-full bg-white border-b-2 border-primary/10 shadow-sm backdrop-blur-md">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
           <div className="flex items-center gap-3">
@@ -68,7 +68,7 @@ export default function LandingPage() {
               <a href="#regional" className="hover:text-primary transition-colors">{t.regionalFocus}</a>
             </nav>
 
-            {/* Language Switcher */}
+
             <div className="bg-slate-100 rounded-lg p-1 flex gap-1">
               {(['en', 'ru', 'kg'] as const).map((l) => (
                 <button
@@ -107,7 +107,7 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-1">
-        {/* Hero Section */}
+
         <section className="relative pt-24 pb-32 overflow-hidden bg-slate-50">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-40 pointer-events-none">
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px]" />
@@ -149,7 +149,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Feature Grid */}
+
         <section id="features" className="py-32 bg-white">
           <div className="mx-auto max-w-7xl px-6">
             <div className="text-center mb-24">
@@ -188,7 +188,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Regional Focus */}
+
         <section id="regional" className="py-32 bg-slate-900 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
             <Globe2 className="w-full h-full scale-110" />
@@ -217,7 +217,7 @@ export default function LandingPage() {
                 </div>
               </div>
               <div className="relative h-full min-h-[500px]">
-                {/* Прямоугольная карта */}
+
                 <div className="h-full w-full rounded-3xl overflow-hidden border-4 border-primary/20 shadow-2xl relative bg-slate-800">
                   <MapComponent
                     center={[41.2, 74.8]}
@@ -227,13 +227,13 @@ export default function LandingPage() {
                   />
                 </div>
 
-                {/* Статистика */}
+
                 <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-primary to-blue-600 p-8 rounded-2xl shadow-2xl border-2 border-white/20 backdrop-blur-sm z-10">
                   <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-1 text-white/70">{t.currentCanalDepth}</p>
                   <p className="text-3xl font-black text-white">2.4m <span className="text-sm opacity-70 uppercase">Безопасно</span></p>
                 </div>
 
-                {/* Бейдж "Кыргызстан" */}
+
                 <div className="absolute -top-4 -right-4 bg-white/95 backdrop-blur-sm px-6 py-3 rounded-xl shadow-xl border-2 border-primary/20 z-10">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-primary">🇰🇬 Кыргызстан</p>
                 </div>
@@ -243,7 +243,7 @@ export default function LandingPage() {
         </section>
       </main>
 
-      {/* Footer */}
+
       <footer className="bg-white border-t border-slate-100 py-16">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col items-center justify-between gap-10 md:flex-row">

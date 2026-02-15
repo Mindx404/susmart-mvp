@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, Polyline, CircleMarker } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-
-// Fix for default Leaflet marker icons
 const DefaultIcon = L.icon({
     iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
     shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
@@ -52,7 +50,7 @@ export default function LeafletMap({
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        // Пытаемся загрузить реальные данные из файла
+
         fetch('/data/kyrgyzstan-canals.json')
             .then(res => res.json())
             .then(data => {
@@ -66,23 +64,20 @@ export default function LeafletMap({
             })
     }, [])
 
-    // Используем реальные данные если есть, иначе переданные через props
     const displayCanals = realCanals.length > 0 ? realCanals : canals
 
-    // Функция для определения цвета канала
     const getCanalColor = (type?: string) => {
         switch (type) {
-            case 'canal': return '#0ea5e9' // Синий для каналов
-            case 'drain': return '#06b6d4' // Голубой для дренажа
-            default: return '#3b82f6' // Стандартный синий
+            case 'canal': return '#0ea5e9'
+            case 'drain': return '#06b6d4'
+            default: return '#3b82f6'
         }
     }
 
-    // Функция для определения ширины канала
     const getCanalWeight = (pathLength: number) => {
-        if (pathLength > 50) return 5 // Крупный канал
-        if (pathLength > 20) return 4 // Средний
-        return 3 // Малый
+        if (pathLength > 50) return 5
+        if (pathLength > 20) return 4
+        return 3
     }
 
     return (
@@ -93,15 +88,15 @@ export default function LeafletMap({
             zoomControl={interactive}
             scrollWheelZoom={interactive}
         >
-            {/* Красивая спутниковая карта */}
+            { }
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 maxZoom={19}
             />
 
-            {/* Рисуем каналы */}
-            {displayCanals.map((canal, index) => {
+            { }
+            {displayCanals.map((canal: Canal, index: number) => {
                 const color = getCanalColor(canal.type)
                 const weight = getCanalWeight(canal.path.length)
 
@@ -133,17 +128,17 @@ export default function LeafletMap({
                 )
             })}
 
-            {/* Маркеры полей */}
-            {markers.map((marker) => {
-                let fillColor = '#10b981' // green
+            { }
+            {markers.map((marker: MapMarker) => {
+                let fillColor = '#10b981'
                 let strokeColor = '#059669'
 
                 if (marker.riskScore !== undefined) {
                     if (marker.riskScore >= 80) {
-                        fillColor = '#ef4444' // red
+                        fillColor = '#ef4444'
                         strokeColor = '#dc2626'
                     } else if (marker.riskScore > 50) {
-                        fillColor = '#f59e0b' // amber
+                        fillColor = '#f59e0b'
                         strokeColor = '#d97706'
                     }
                 }
@@ -173,7 +168,7 @@ export default function LeafletMap({
                                     <div className="mt-2 flex items-center gap-2">
                                         <span className="text-xs font-medium text-slate-600">Риск:</span>
                                         <span className={`text-sm font-black ${marker.riskScore >= 80 ? 'text-red-600' :
-                                                marker.riskScore > 50 ? 'text-amber-600' : 'text-green-600'
+                                            marker.riskScore > 50 ? 'text-amber-600' : 'text-green-600'
                                             }`}>
                                             {marker.riskScore}%
                                         </span>
@@ -185,7 +180,7 @@ export default function LeafletMap({
                 )
             })}
 
-            {/* Индикатор загрузки */}
+            { }
             {loading && (
                 <div className="leaflet-top leaflet-right" style={{ marginTop: '10px', marginRight: '10px' }}>
                     <div className="bg-white px-4 py-2 rounded-lg shadow-lg">
@@ -194,7 +189,7 @@ export default function LeafletMap({
                 </div>
             )}
 
-            {/* Легенда */}
+            { }
             {!loading && displayCanals.length > 0 && (
                 <div className="leaflet-bottom leaflet-left" style={{ marginBottom: '30px', marginLeft: '10px' }}>
                     <div className="bg-white px-4 py-3 rounded-xl shadow-xl border-2 border-slate-100">

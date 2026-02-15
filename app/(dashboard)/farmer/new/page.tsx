@@ -5,8 +5,6 @@ import { createClient } from '@/utils/supabase/client'
 import { useRouter } from 'next/navigation'
 import { MapPin, Sprout, Home, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-
-// Реальные данные Кыргызстана
 const REGIONS = {
     'Чуйская область': {
         'Аламединский район': ['ул. Ленина', 'ул. Жибек Жолу', 'ул. Манаса', 'ул. Ахунбаева'],
@@ -38,7 +36,7 @@ export default function NewFieldPage() {
     const router = useRouter()
 
     const districts = Object.keys(REGIONS[region as keyof typeof REGIONS] || {})
-    const streets = REGIONS[region as keyof typeof REGIONS]?.[district as keyof typeof REGIONS[keyof typeof REGIONS]] || []
+    const streets = (REGIONS[region as keyof typeof REGIONS] as any)?.[district] || []
 
     const handleGetLocation = () => {
         if (navigator.geolocation) {
@@ -96,7 +94,7 @@ export default function NewFieldPage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 font-sans p-6">
             <div className="max-w-3xl mx-auto">
-                {/* Header */}
+                { }
                 <div className="mb-8">
                     <Link href="/farmer">
                         <button className="flex items-center gap-2 text-slate-600 hover:text-slate-900 font-bold mb-4">
@@ -109,7 +107,7 @@ export default function NewFieldPage() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 space-y-6">
-                    {/* Название */}
+                    { }
                     <div>
                         <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">
                             Название участка
@@ -124,7 +122,7 @@ export default function NewFieldPage() {
                         />
                     </div>
 
-                    {/* Адрес */}
+                    { }
                     <div className="bg-blue-50 rounded-2xl p-6 space-y-4">
                         <div className="flex items-center gap-2 text-blue-700 mb-2">
                             <MapPin className="w-5 h-5" />
@@ -144,7 +142,7 @@ export default function NewFieldPage() {
                                 }}
                                 className="w-full h-12 px-4 bg-white border-2 border-slate-200 rounded-xl font-bold focus:outline-none focus:border-blue-500"
                             >
-                                {Object.keys(REGIONS).map(r => (
+                                {Object.keys(REGIONS).map((r: string) => (
                                     <option key={r} value={r}>{r}</option>
                                 ))}
                             </select>
@@ -159,7 +157,7 @@ export default function NewFieldPage() {
                                 onChange={(e) => setDistrict(e.target.value)}
                                 className="w-full h-12 px-4 bg-white border-2 border-slate-200 rounded-xl font-bold focus:outline-none focus:border-blue-500"
                             >
-                                {districts.map(d => (
+                                {districts.map((d: string) => (
                                     <option key={d} value={d}>{d}</option>
                                 ))}
                             </select>
@@ -176,14 +174,14 @@ export default function NewFieldPage() {
                                 required
                             >
                                 <option value="">Выберите улицу</option>
-                                {streets.map(s => (
+                                {streets.map((s: string) => (
                                     <option key={s} value={s}>{s}</option>
                                 ))}
                             </select>
                         </div>
                     </div>
 
-                    {/* Культура и площадь */}
+                    { }
                     <div className="grid grid-cols-2 gap-4">
                         <div>
                             <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">
@@ -219,7 +217,7 @@ export default function NewFieldPage() {
                         </div>
                     </div>
 
-                    {/* Координаты */}
+                    { }
                     <div className="bg-slate-50 rounded-2xl p-6">
                         <button
                             type="button"
@@ -255,7 +253,7 @@ export default function NewFieldPage() {
                         </div>
                     </div>
 
-                    {/* Submit */}
+                    { }
                     <button
                         type="submit"
                         disabled={loading}

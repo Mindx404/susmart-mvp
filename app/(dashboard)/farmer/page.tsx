@@ -36,7 +36,7 @@ export default function FarmerDashboard() {
     useEffect(() => {
         loadData()
 
-        // Realtime для автообновления
+
         const channel = supabase
             .channel('farmer-updates')
             .on('postgres_changes', { event: '*', schema: 'public', table: 'fields' }, () => {
@@ -59,7 +59,7 @@ export default function FarmerDashboard() {
 
         setUserId(user.id)
 
-        // Загружаем мои поля
+
         const { data: myData } = await supabase
             .from('fields')
             .select('*')
@@ -70,7 +70,7 @@ export default function FarmerDashboard() {
             setMyFields(myData)
         }
 
-        // Загружаем ВСЕ поля в очереди (для отображения позиции)
+
         const { data: allData } = await supabase
             .from('fields')
             .select('*')
@@ -91,16 +91,16 @@ export default function FarmerDashboard() {
         return { text: status, color: 'gray', icon: AlertCircle }
     }
 
-    // Находим позицию поля в очереди
+
     const getQueuePosition = (fieldId: string) => {
         const index = allPendingFields.findIndex(f => f.id === fieldId)
         return index !== -1 ? index + 1 : null
     }
 
-    // Поля в очереди (pending)
+
     const pendingFields = myFields.filter(f => f.status === 'pending')
 
-    // Одобренные поля (в очереди полива)
+
     const approvedFields = myFields.filter(f => f.status === 'approved').sort((a, b) => (a.queue_position || 0) - (b.queue_position || 0))
 
     const formatTime = (isoString?: string) => {
@@ -123,7 +123,7 @@ export default function FarmerDashboard() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 font-sans">
-            {/* Header */}
+
             <header className="bg-white border-b-2 border-slate-100 shadow-sm sticky top-0 z-50">
                 <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-4">
@@ -157,7 +157,7 @@ export default function FarmerDashboard() {
             </header>
 
             <div className="max-w-4xl mx-auto p-6">
-                {/* Queue Status Card */}
+
                 {pendingFields.length > 0 && (
                     <div className="mb-6 bg-gradient-to-r from-blue-600 to-blue-500 rounded-3xl shadow-xl shadow-blue-500/30 p-6 text-white">
                         <div className="flex items-center gap-3 mb-4">
@@ -179,7 +179,7 @@ export default function FarmerDashboard() {
                     </div>
                 )}
 
-                {/* Очередь полива (одобренные заявки) */}
+
                 {approvedFields.length > 0 && (
                     <div className="mb-6 bg-gradient-to-r from-green-600 to-green-500 rounded-3xl shadow-xl shadow-green-500/30 p-6 text-white">
                         <div className="flex items-center gap-3 mb-4">
@@ -187,7 +187,7 @@ export default function FarmerDashboard() {
                             <h2 className="text-xl font-black">Ваша очередь полива</h2>
                         </div>
                         <div className="space-y-3">
-                            {approvedFields.map((field) => (
+                            {approvedFields.map((field: Field) => (
                                 <div key={field.id} className="bg-white/10 backdrop-blur rounded-xl p-4">
                                     <div className="flex items-start justify-between mb-3">
                                         <div>
@@ -227,7 +227,7 @@ export default function FarmerDashboard() {
                     </div>
                 )}
 
-                {/* Add Button */}
+
                 <div className="mb-8">
                     <Link href="/farmer/new">
                         <button className="w-full h-16 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white font-black text-lg rounded-2xl shadow-xl shadow-green-500/30 transition-all flex items-center justify-center gap-3">
@@ -237,7 +237,7 @@ export default function FarmerDashboard() {
                     </Link>
                 </div>
 
-                {/* Fields List */}
+
                 {loading ? (
                     <div className="text-center py-20">
                         <div className="w-16 h-16 border-4 border-green-200 border-t-green-600 rounded-full animate-spin mx-auto mb-4"></div>
@@ -260,7 +260,7 @@ export default function FarmerDashboard() {
                     </div>
                 ) : (
                     <div className="space-y-4">
-                        {myFields.map((field) => {
+                        {myFields.map((field: Field) => {
                             const statusInfo = getStatusInfo(field.status)
                             const StatusIcon = statusInfo.icon
                             const queuePosition = field.status === 'pending' ? getQueuePosition(field.id) : null

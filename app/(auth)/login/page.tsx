@@ -56,7 +56,7 @@ export default function LoginPage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4 font-sans">
             <div className="w-full max-w-md">
-                {/* Logo */}
+
                 <div className="text-center mb-8">
                     <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-400 rounded-3xl shadow-2xl shadow-blue-500/30 mb-4">
                         <Droplets className="w-10 h-10 text-white" />
@@ -65,7 +65,7 @@ export default function LoginPage() {
                     <p className="text-slate-500 font-medium mt-2">Система Управления Водными Ресурсами</p>
                 </div>
 
-                {/* Main Card */}
+
                 <div className="bg-white rounded-3xl shadow-2xl shadow-slate-200/50 overflow-hidden">
                     <div className="p-8">
                         <h2 className="text-2xl font-black text-slate-900 mb-6">Вход в систему</h2>
@@ -134,7 +134,7 @@ export default function LoginPage() {
                         </div>
                     </div>
 
-                    {/* Demo Section */}
+
                     <div className="bg-slate-50 p-6 border-t-2 border-slate-100">
                         <p className="text-xs font-black uppercase tracking-widest text-slate-400 text-center mb-4">
                             Демо-доступ
@@ -158,7 +158,7 @@ export default function LoginPage() {
                     </div>
                 </div>
 
-                {/* Back to Home */}
+
                 <div className="text-center mt-6">
                     <Link href="/" className="text-sm font-bold text-slate-500 hover:text-slate-700 hover:underline">
                         ← Вернуться на главную
