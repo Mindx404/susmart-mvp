@@ -1,10 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@/utils/supabase/client'
 import { useRouter } from 'next/navigation'
+import { createClient } from '@/utils/supabase/client'
 import { MapPin, Sprout, Home, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
+
+export const dynamic = 'force-dynamic'
 const REGIONS = {
     'Чуйская область': {
         'Аламединский район': ['ул. Ленина', 'ул. Жибек Жолу', 'ул. Манаса', 'ул. Ахунбаева'],

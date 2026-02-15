@@ -13,6 +13,8 @@ import { RiskBadge } from '@/components/RiskBadge'
 import GlobalHeader from '@/components/GlobalHeader'
 import { cn } from '@/lib/utils'
 
+export const dynamic = 'force-dynamic'
+
 const MOCK_CANALS = [
     {
         id: 'c1',

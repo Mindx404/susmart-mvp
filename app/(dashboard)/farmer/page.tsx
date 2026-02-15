@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Plus, LogOut, Sprout, MapPin, AlertCircle, CheckCircle2, Clock, Home, TrendingUp, Users, Calendar, Timer } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 interface Field {
     id: string
     name: string

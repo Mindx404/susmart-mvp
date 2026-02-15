@@ -7,6 +7,8 @@ import { LogOut, Activity, Trash2, CheckCircle2, Clock, Home, MapPin, Calendar, 
 import MapComponent from '@/components/MapComponent'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 interface Field {
     id: string
     name: string
