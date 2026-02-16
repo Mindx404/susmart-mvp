@@ -224,11 +224,11 @@ export default function LandingPage() {
                 <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-primary/20 backdrop-blur px-3 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-xs font-black uppercase tracking-widest text-primary mb-6 sm:mb-8 border border-primary/30">
                   {t.regionalFocus}
                 </div>
-                <h2 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight mb-4 sm:mb-6">
+                <h2 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight mb-4 sm:mb-6 text-white">
                   {t.empowering}
                 </h2>
                 <div className="w-24 h-1 bg-primary mb-6 sm:mb-8"></div>
-                <p className="text-base sm:text-lg text-slate-300 font-medium leading-relaxed mb-8 sm:mb-10 max-w-xl">
+                <p className="text-base sm:text-lg text-slate-200 font-medium leading-relaxed mb-8 sm:mb-10 max-w-xl">
                   {t.empoweringDesc}
                 </p>
                 <div className="grid grid-cols-2 gap-4 sm:gap-6">
@@ -236,14 +236,14 @@ export default function LandingPage() {
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all"></div>
                     <div className="relative bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all">
                       <p className="text-3xl sm:text-4xl font-black mb-2 bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">40k+</p>
-                      <p className="text-xs sm:text-sm font-bold text-slate-400 uppercase">{t.hectares}</p>
+                      <p className="text-xs sm:text-sm font-bold text-slate-200 uppercase">{t.hectares}</p>
                     </div>
                   </div>
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent rounded-2xl blur-xl group-hover:blur-2xl transition-all"></div>
                     <div className="relative bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-4 sm:p-6 hover:bg-white/10 transition-all">
                       <p className="text-3xl sm:text-4xl font-black mb-2 bg-gradient-to-r from-green-400 to-green-300 bg-clip-text text-transparent">30%</p>
-                      <p className="text-xs sm:text-sm font-bold text-slate-400 uppercase">{t.efficiencyGain}</p>
+                      <p className="text-xs sm:text-sm font-bold text-slate-200 uppercase">{t.efficiencyGain}</p>
                     </div>
                   </div>
                 </div>

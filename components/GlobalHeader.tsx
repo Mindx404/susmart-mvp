@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
-import { Droplets, Wifi, WifiOff, LogOut, User as UserIcon, Globe } from 'lucide-react'
+import { Droplets, Wifi, WifiOff, LogOut, User as UserIcon, Globe, Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
@@ -12,11 +12,17 @@ export default function GlobalHeader() {
     const [user, setUser] = useState<any>(null)
     const [profile, setProfile] = useState<any>(null)
     const [lang, setLang] = useState<'en' | 'ru' | 'kg'>('ru')
+    const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
     const router = useRouter()
     const supabase = createClient()
 
     useEffect(() => {
+        const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
+        if (savedTheme) {
+            setTheme(savedTheme)
+            document.documentElement.classList.toggle('dark', savedTheme === 'dark')
+        }
 
         const handleOnline = () => setIsOnline(true)
         const handleOffline = () => setIsOnline(false)
@@ -49,6 +55,13 @@ export default function GlobalHeader() {
             }
         }
     }, [])
+
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light'
+        setTheme(newTheme)
+        localStorage.setItem('theme', newTheme)
+        document.documentElement.classList.toggle('dark', newTheme === 'dark')
+    }
 
     const handleLogout = async () => {
         await supabase.auth.signOut()
@@ -88,6 +101,16 @@ export default function GlobalHeader() {
                 <div className="md:hidden flex items-center justify-center h-8 w-8 bg-slate-50 text-slate-500 rounded-full text-xs font-black uppercase border border-slate-100">
                     {lang}
                 </div>
+
+                <div className="h-8 w-px bg-slate-100 mx-1 hidden sm:block" />
+
+                <button
+                    onClick={toggleTheme}
+                    className="flex items-center justify-center h-9 w-9 bg-slate-100/50 hover:bg-slate-200/50 text-slate-700 rounded-lg border border-slate-200/50 transition-all hover:shadow-sm"
+                    title={theme === 'light' ? 'Темная тема' : 'Светлая тема'}
+                >
+                    {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                </button>
 
                 <div className="h-8 w-px bg-slate-100 mx-1 hidden sm:block" />
 

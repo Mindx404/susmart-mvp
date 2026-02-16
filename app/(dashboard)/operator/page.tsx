@@ -263,20 +263,20 @@ export default function OperatorDashboard() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
 
                     <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 overflow-hidden">
                         <div className="p-6 bg-gradient-to-r from-blue-600 to-blue-500 text-white">
                             <div className="flex items-center justify-between mb-4">
                                 <div>
-                                    <h2 className="text-2xl font-black">Заявки в ожидании</h2>
+                                    <h2 className="text-xl sm:text-2xl font-black">Заявки в ожидании</h2>
                                     <p className="text-blue-100 text-sm font-medium mt-1">
                                         {displayedPending.length} заявок
                                     </p>
                                 </div>
                                 <button
                                     onClick={() => setSimulationActive(!simulationActive)}
-                                    className={`px-4 py-2 rounded-xl font-bold text-sm ${simulationActive
+                                    className={`px-3 sm:px-4 py-2 rounded-xl font-bold text-xs sm:text-sm ${simulationActive
                                         ? 'bg-amber-500 text-white'
                                         : 'bg-white/20 hover:bg-white/30'
                                         }`}
@@ -311,21 +311,21 @@ export default function OperatorDashboard() {
                                                 {fields.map((field: Field, index: number) => (
                                                     <div key={field.id} className="p-5 hover:bg-slate-50">
                                                         <div className="flex items-start gap-4">
-                                                            <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center">
+                                                            <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
                                                                 <span className="text-sm font-black text-slate-700">#{index + 1}</span>
                                                             </div>
-                                                            <div className="flex-1">
-                                                                <div className="flex items-start justify-between mb-2">
-                                                                    <div>
-                                                                        <h3 className="font-black text-slate-900 text-sm">{field.name}</h3>
-                                                                        <p className="text-xs text-slate-500">
+                                                            <div className="flex-1 min-w-0">
+                                                                <div className="flex items-start justify-between mb-2 gap-2">
+                                                                    <div className="flex-1 min-w-0">
+                                                                        <h3 className="font-black text-slate-900 text-sm truncate">{field.name}</h3>
+                                                                        <p className="text-xs text-slate-500 truncate">
                                                                             {field.profiles?.full_name} • {field.crop_type}
                                                                         </p>
                                                                         {field.street && (
-                                                                            <p className="text-xs text-slate-400 mt-1">📍 {field.street}</p>
+                                                                            <p className="text-xs text-slate-400 mt-1 truncate">📍 {field.street}</p>
                                                                         )}
                                                                     </div>
-                                                                    <div className={`px-3 py-1 rounded-lg font-black text-xs ${field.risk_score > 70 ? 'bg-red-100 text-red-700' :
+                                                                    <div className={`px-3 py-1 rounded-lg font-black text-xs flex-shrink-0 ${field.risk_score > 70 ? 'bg-red-100 text-red-700' :
                                                                         field.risk_score > 40 ? 'bg-amber-100 text-amber-700' :
                                                                             'bg-green-100 text-green-700'
                                                                         }`}>
