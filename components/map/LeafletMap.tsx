@@ -68,16 +68,16 @@ export default function LeafletMap({
 
     const getCanalColor = (type?: string) => {
         switch (type) {
-            case 'canal': return '#0ea5e9'
+            case 'canal': return '#3b82f6'
             case 'drain': return '#06b6d4'
-            default: return '#3b82f6'
+            default: return '#0ea5e9'
         }
     }
 
     const getCanalWeight = (pathLength: number) => {
-        if (pathLength > 50) return 5
-        if (pathLength > 20) return 4
-        return 3
+        if (pathLength > 50) return 6
+        if (pathLength > 20) return 5
+        return 4
     }
 
     return (
@@ -87,15 +87,15 @@ export default function LeafletMap({
             style={{ height: '100%', width: '100%', borderRadius: '0' }}
             zoomControl={interactive}
             scrollWheelZoom={interactive}
+            maxZoom={20}
         >
-            { }
             <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                maxZoom={19}
+                attribution='&copy; <a href="https://carto.com/">CartoDB</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                maxZoom={20}
+                subdomains="abcd"
             />
 
-            { }
             {displayCanals.map((canal: Canal, index: number) => {
                 const color = getCanalColor(canal.type)
                 const weight = getCanalWeight(canal.path.length)
@@ -107,21 +107,24 @@ export default function LeafletMap({
                         pathOptions={{
                             color: color,
                             weight: weight,
-                            opacity: 0.8,
+                            opacity: 0.9,
                             lineCap: 'round',
                             lineJoin: 'round',
-                            dashArray: canal.type === 'drain' ? '5, 10' : undefined
+                            dashArray: canal.type === 'drain' ? '8, 12' : undefined,
+                            className: 'canal-line'
                         }}
                     >
                         <Popup>
-                            <div className="p-2">
-                                <p className="font-bold text-blue-700">{canal.name}</p>
-                                <p className="text-xs text-slate-500 mt-1">
-                                    {canal.type === 'canal' ? '🌊 Канал' : '💧 Дренаж'}
-                                </p>
-                                <p className="text-xs text-slate-400">
-                                    Длина: ~{(canal.path.length * 0.1).toFixed(1)} км
-                                </p>
+                            <div className="p-3">
+                                <p className="font-black text-lg text-primary mb-2">{canal.name}</p>
+                                <div className="space-y-1">
+                                    <p className="text-sm text-slate-700 font-bold">
+                                        {canal.type === 'canal' ? '🌊 Канал' : '💧 Дренаж'}
+                                    </p>
+                                    <p className="text-xs text-slate-500">
+                                        Длина: ~{(canal.path.length * 0.1).toFixed(1)} км
+                                    </p>
+                                </div>
                             </div>
                         </Popup>
                     </Polyline>
