@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Official portal for agricultural water distribution and irrigation management in Kyrgyzstan.",
 };
 
+import { ThemeProvider } from "@/contexts/ThemeContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
