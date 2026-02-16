@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
-import { Droplets, ShieldCheck, MapPin, Activity, CheckCircle2, Globe2 } from 'lucide-react'
+import { Droplets, ShieldCheck, MapPin, Activity, CheckCircle2, Globe2, Sun, Moon } from 'lucide-react'
 import MapComponent from '@/components/MapComponent'
 import { createClient } from '@/utils/supabase/client'
 import { useState, useEffect } from 'react'
 import { translations } from '@/utils/translations'
 import { cn } from '@/lib/utils'
+import { useTheme } from '@/contexts/ThemeContext'
 
 type Lang = 'en' | 'ru' | 'kg'
 
@@ -29,6 +30,7 @@ export default function LandingPage() {
   const [lang, setLang] = useState<Lang>('ru')
   const [user, setUser] = useState<any>(null)
   const [role, setRole] = useState<'farmer' | 'operator' | null>(null)
+  const { theme, toggleTheme } = useTheme()
   const supabase = createClient()
   const t = translations[lang]
 
@@ -84,6 +86,18 @@ export default function LandingPage() {
               ))}
             </div>
 
+            <button
+              onClick={toggleTheme}
+              className="h-8 w-8 sm:h-9 sm:w-9 bg-white/10 hover:bg-white/20 backdrop-blur rounded-lg flex items-center justify-center transition-colors border border-white/20"
+              title={theme === 'light' ? 'Переключить на темную тему' : 'Переключить на светлую тему'}
+            >
+              {theme === 'light' ? (
+                <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+              ) : (
+                <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+              )}
+            </button>
+
             <div className="flex items-center gap-2 sm:gap-4">
               {user ? (
                 <Link href={role === 'operator' ? '/operator' : '/farmer'}>
@@ -109,9 +123,9 @@ export default function LandingPage() {
 
       <main className="flex-1">
 
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/85 via-slate-900/75 to-slate-900/85 z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10"></div>
             <img
               src="/slide-1960x857-07.jpg"
               alt="Water Management"
@@ -124,7 +138,7 @@ export default function LandingPage() {
               <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4" /> {t.trustedResource}
             </div>
 
-            <h1 className="mx-auto max-w-5xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight px-2 mb-6 sm:mb-8 drop-shadow-2xl [text-shadow:_0_4px_12px_rgb(0_0_0_/_80%)]">
+            <h1 className="mx-auto max-w-5xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight px-2 mb-6 sm:mb-8 drop-shadow-2xl">
               {t.landingTitle}
             </h1>
 
