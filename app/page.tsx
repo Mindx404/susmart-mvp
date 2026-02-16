@@ -111,7 +111,7 @@ export default function LandingPage() {
 
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-900/70 z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/85 via-slate-900/75 to-slate-900/85 z-10"></div>
             <img
               src="/slide-1960x857-07.jpg"
               alt="Water Management"
@@ -124,13 +124,13 @@ export default function LandingPage() {
               <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4" /> {t.trustedResource}
             </div>
 
-            <h1 className="mx-auto max-w-5xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight px-2 mb-6 sm:mb-8 drop-shadow-2xl">
+            <h1 className="mx-auto max-w-5xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight px-2 mb-6 sm:mb-8 drop-shadow-2xl [text-shadow:_0_4px_12px_rgb(0_0_0_/_80%)]">
               {t.landingTitle}
             </h1>
 
-            <div className="w-24 h-1 bg-primary mx-auto mb-6 sm:mb-8"></div>
+            <div className="w-24 h-1 bg-primary mx-auto mb-6 sm:mb-8 shadow-lg shadow-primary/50"></div>
 
-            <p className="mx-auto mt-6 sm:mt-8 max-w-3xl text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed font-medium px-4 drop-shadow-lg">
+            <p className="mx-auto mt-6 sm:mt-8 max-w-3xl text-lg sm:text-xl md:text-2xl text-white leading-relaxed font-medium px-4 drop-shadow-lg [text-shadow:_0_2px_8px_rgb(0_0_0_/_60%)]">
               {t.landingSubtitle}
             </p>
 
