@@ -138,7 +138,7 @@ export default function LandingPage() {
               <ShieldCheck className="h-3 w-3 sm:h-4 sm:w-4" /> {t.trustedResource}
             </div>
 
-            <h1 className="mx-auto max-w-5xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight px-2 mb-6 sm:mb-8 drop-shadow-2xl">
+            <h1 className="mx-auto max-w-5xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black !text-white leading-[1.1] tracking-tight px-2 mb-6 sm:mb-8 drop-shadow-2xl [text-shadow:_0_2px_10px_rgb(0_0_0_/_70%)]">
               {t.landingTitle}
             </h1>
 
@@ -151,14 +151,14 @@ export default function LandingPage() {
             <div className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4">
               {user ? (
                 <Link href={role === 'operator' ? '/operator' : '/farmer'} className="w-full sm:w-auto">
-                  <Button size="lg" className="w-full sm:w-auto h-14 sm:h-16 px-10 sm:px-14 text-base sm:text-lg font-black shadow-2xl bg-primary hover:bg-primary/90 transition-all">
+                  <Button size="lg" className="w-full sm:w-auto h-14 sm:h-16 px-10 sm:px-14 text-base sm:text-lg font-black shadow-2xl bg-primary hover:bg-primary/90 transition-all text-white">
                     {lang === 'ru' ? 'Перейти в Панель' : lang === 'kg' ? 'Башкаруу Панели' : 'Go to Dashboard'}
                   </Button>
                 </Link>
               ) : (
                 <>
                   <Link href="/register" className="w-full sm:w-auto">
-                    <Button size="lg" className="w-full sm:w-auto h-14 sm:h-16 px-10 sm:px-14 text-base sm:text-lg font-black shadow-2xl bg-primary hover:bg-primary/90 transition-all">
+                    <Button size="lg" className="w-full sm:w-auto h-14 sm:h-16 px-10 sm:px-14 text-base sm:text-lg font-black shadow-2xl bg-primary hover:bg-primary/90 transition-all text-white">
                       {t.registerField}
                     </Button>
                   </Link>
@@ -180,7 +180,7 @@ export default function LandingPage() {
               <div className="inline-block mb-4">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-[0.3em] text-primary bg-primary/10 px-4 py-2 rounded-full">{t.coreCapabilities}</span>
               </div>
-              <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight px-4 mb-4">{t.efficiency}</h2>
+              <h2 className="text-3xl sm:text-5xl font-black !text-black tracking-tight px-4 mb-4">{t.efficiency}</h2>
               <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"></div>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
@@ -190,7 +190,7 @@ export default function LandingPage() {
                   <div className="mb-6 sm:mb-8 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-blue-600 text-white shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-6">
                     <Activity className="h-7 w-7 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 sm:mb-4 group-hover:text-primary transition-colors">{t.aiRisk}</h3>
+                  <h3 className="text-xl sm:text-2xl font-black !text-black mb-3 sm:mb-4 group-hover:text-primary transition-colors">{t.aiRisk}</h3>
                   <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
                     {t.aiRiskDesc}
                   </p>
@@ -203,7 +203,7 @@ export default function LandingPage() {
                   <div className="mb-6 sm:mb-8 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-6">
                     <MapPin className="h-7 w-7 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 sm:mb-4 group-hover:text-green-600 transition-colors">{t.geoSync}</h3>
+                  <h3 className="text-xl sm:text-2xl font-black !text-black mb-3 sm:mb-4 group-hover:text-green-600 transition-colors">{t.geoSync}</h3>
                   <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
                     {t.geoSyncDesc}
                   </p>
@@ -216,7 +216,7 @@ export default function LandingPage() {
                   <div className="mb-6 sm:mb-8 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-6">
                     <CheckCircle2 className="h-7 w-7 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 sm:mb-4 group-hover:text-purple-600 transition-colors">{t.fairness}</h3>
+                  <h3 className="text-xl sm:text-2xl font-black !text-black mb-3 sm:mb-4 group-hover:text-purple-600 transition-colors">{t.fairness}</h3>
                   <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
                     {t.fairnessDesc}
                   </p>
