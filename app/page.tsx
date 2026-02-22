@@ -238,7 +238,7 @@ export default function LandingPage() {
                 <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-primary/20 backdrop-blur px-3 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-xs font-black uppercase tracking-widest text-primary mb-6 sm:mb-8 border border-primary/30">
                   {t.regionalFocus}
                 </div>
-                <h2 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight mb-4 sm:mb-6 text-white">
+                <h2 className="text-3xl sm:text-5xl font-black leading-tight tracking-tight mb-4 sm:mb-6 !text-white">
                   {t.empowering}
                 </h2>
                 <div className="w-24 h-1 bg-primary mb-6 sm:mb-8"></div>
