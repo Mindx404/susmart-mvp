@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/utils/supabase/client'
-import { MapPin, Sprout, Home, ArrowLeft } from 'lucide-react'
+import { MapPin, Sprout, Home, ArrowLeft, Camera, UploadCloud, CheckCircle2, Loader2 } from 'lucide-react'
 import Link from 'next/link'
+import { analyzeCropPhoto } from '@/lib/ai'
 
 export const dynamic = 'force-dynamic'
 const REGIONS = {
@@ -32,6 +33,9 @@ export default function NewFieldPage() {
     const [street, setStreet] = useState('')
     const [lat, setLat] = useState('')
     const [lng, setLng] = useState('')
+    const [selectedFile, setSelectedFile] = useState<File | null>(null)
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+    const [isAnalyzing, setIsAnalyzing] = useState(false)
     const [loading, setLoading] = useState(false)
 
     const supabase = createClient()
@@ -52,6 +56,19 @@ export default function NewFieldPage() {
                     setLng('74.5698')
                 }
             )
+        }
+    }
+
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0]
+            setSelectedFile(file)
+            setPreviewUrl(URL.createObjectURL(file))
+
+            // Mock AI Analysis
+            setIsAnalyzing(true)
+            await new Promise(resolve => setTimeout(resolve, 2000))
+            setIsAnalyzing(false)
         }
     }
 
@@ -220,6 +237,53 @@ export default function NewFieldPage() {
                     </div>
 
                     { }
+                    {/* PHOTO UPLOAD SECTION */}
+                    <div className="space-y-4">
+                        <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">
+                            Фото урожая (для AI анализа)
+                        </label>
+                        <div
+                            onClick={() => document.getElementById('photo-upload')?.click()}
+                            className={`border-2 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 ${selectedFile ? 'border-green-500 bg-green-50/50' : 'border-slate-200 hover:border-green-500 hover:bg-slate-50'
+                                }`}
+                        >
+                            <input
+                                id="photo-upload"
+                                type="file"
+                                accept="image/*"
+                                onChange={handleFileChange}
+                                className="hidden"
+                            />
+                            {previewUrl ? (
+                                <div className="text-center">
+                                    <div className="relative w-32 h-32 mx-auto mb-3 rounded-xl overflow-hidden shadow-md">
+                                        <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
+                                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                                            <CheckCircle2 className="text-white w-8 h-8" />
+                                        </div>
+                                    </div>
+                                    <p className="text-sm font-bold text-slate-800">{selectedFile?.name}</p>
+                                    <p className="text-xs text-green-600 font-bold mt-1">Фото загружено</p>
+                                </div>
+                            ) : (
+                                <div className="text-center group">
+                                    <div className="h-12 w-12 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-green-100 group-hover:text-green-600 transition-colors">
+                                        <UploadCloud className="h-6 w-6" />
+                                    </div>
+                                    <p className="text-sm font-bold text-slate-600">Нажмите, чтобы загрузить фото</p>
+                                    <p className="text-xs text-slate-400 mt-1">или сделайте снимок урожая</p>
+                                </div>
+                            )}
+                        </div>
+
+                        {isAnalyzing && (
+                            <div className="bg-green-900/5 rounded-xl p-4 text-center animate-pulse border border-green-100">
+                                <Loader2 className="h-6 w-6 mx-auto text-green-600 animate-spin mb-2" />
+                                <p className="text-xs font-bold text-green-800 uppercase tracking-widest">Анализируем состояние урожая...</p>
+                            </div>
+                        )}
+                    </div>
+
                     <div className="bg-slate-50 rounded-2xl p-6">
                         <button
                             type="button"
