@@ -121,8 +121,8 @@ export default function NewFieldPage() {
                             Назад
                         </button>
                     </Link>
-                    <h1 className="text-3xl font-black text-slate-900">Новая заявка на полив</h1>
-                    <p className="text-slate-500 mt-2">Заполните информацию о вашем поле</p>
+                    <h1 className="text-3xl font-black !text-slate-900">Новая заявка на полив</h1>
+                    <p className="text-slate-600 mt-2 font-medium">Заполните информацию о вашем поле</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-8 space-y-6">
@@ -136,7 +136,7 @@ export default function NewFieldPage() {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Например: Участок №4"
-                            className="w-full h-12 px-4 bg-slate-50 border-2 border-slate-100 rounded-xl font-medium focus:outline-none focus:border-green-500"
+                            className="w-full h-12 px-4 bg-slate-100 border-2 border-slate-200 rounded-xl font-bold text-slate-900 focus:outline-none focus:border-green-500"
                             required
                         />
                     </div>
@@ -159,7 +159,7 @@ export default function NewFieldPage() {
                                     const newDistricts = Object.keys(REGIONS[e.target.value as keyof typeof REGIONS])
                                     setDistrict(newDistricts[0] || '')
                                 }}
-                                className="w-full h-12 px-4 bg-white border-2 border-slate-200 rounded-xl font-bold focus:outline-none focus:border-blue-500"
+                                className="w-full h-12 px-4 bg-white border-2 border-slate-200 rounded-xl font-bold text-slate-900 focus:outline-none focus:border-blue-500"
                             >
                                 {Object.keys(REGIONS).map((r: string) => (
                                     <option key={r} value={r}>{r}</option>
@@ -174,7 +174,7 @@ export default function NewFieldPage() {
                             <select
                                 value={district}
                                 onChange={(e) => setDistrict(e.target.value)}
-                                className="w-full h-12 px-4 bg-white border-2 border-slate-200 rounded-xl font-bold focus:outline-none focus:border-blue-500"
+                                className="w-full h-12 px-4 bg-white border-2 border-slate-200 rounded-xl font-bold text-slate-900 focus:outline-none focus:border-blue-500"
                             >
                                 {districts.map((d: string) => (
                                     <option key={d} value={d}>{d}</option>
@@ -189,7 +189,7 @@ export default function NewFieldPage() {
                             <select
                                 value={street}
                                 onChange={(e) => setStreet(e.target.value)}
-                                className="w-full h-12 px-4 bg-white border-2 border-slate-200 rounded-xl font-bold focus:outline-none focus:border-blue-500"
+                                className="w-full h-12 px-4 bg-white border-2 border-slate-200 rounded-xl font-bold text-slate-900 focus:outline-none focus:border-blue-500"
                                 required
                             >
                                 <option value="">Выберите улицу</option>
@@ -209,7 +209,7 @@ export default function NewFieldPage() {
                             <select
                                 value={cropType}
                                 onChange={(e) => setCropType(e.target.value)}
-                                className="w-full h-12 px-4 bg-slate-50 border-2 border-slate-100 rounded-xl font-bold focus:outline-none focus:border-green-500"
+                                className="w-full h-12 px-4 bg-slate-100 border-2 border-slate-200 rounded-xl font-bold text-slate-900 focus:outline-none focus:border-green-500"
                             >
                                 <option>Хлопок</option>
                                 <option>Пшеница</option>
@@ -230,7 +230,7 @@ export default function NewFieldPage() {
                                 value={area}
                                 onChange={(e) => setArea(e.target.value)}
                                 placeholder="5.5"
-                                className="w-full h-12 px-4 bg-slate-50 border-2 border-slate-100 rounded-xl font-medium focus:outline-none focus:border-green-500"
+                                className="w-full h-12 px-4 bg-slate-100 border-2 border-slate-200 rounded-xl font-bold text-slate-900 focus:outline-none focus:border-green-500"
                                 required
                             />
                         </div>
@@ -301,7 +301,7 @@ export default function NewFieldPage() {
                                     value={lat}
                                     onChange={(e) => setLat(e.target.value)}
                                     placeholder="42.8746"
-                                    className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg"
+                                    className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg text-slate-900 font-bold"
                                     required
                                 />
                             </div>
@@ -312,7 +312,7 @@ export default function NewFieldPage() {
                                     value={lng}
                                     onChange={(e) => setLng(e.target.value)}
                                     placeholder="74.5698"
-                                    className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg"
+                                    className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg text-slate-900 font-bold"
                                     required
                                 />
                             </div>
